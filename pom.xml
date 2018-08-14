@@ -568,8 +568,8 @@
     <properties>
         <env>LOCAL</env>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <batik-version>1.7</batik-version>
-        <rhino-version>1.7R4</rhino-version>
+        <batik-version>1.10</batik-version>
+        <rhino-version>1.7.10</rhino-version>
         <sourceEncoding>UTF-8</sourceEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
