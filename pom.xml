@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.liftyourgame</groupId>
+    <groupId>highcharts-serverside-export</groupId>
     <artifactId>highcharts-serverside-export</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>highcharts-serverside-export</name>
     <url>https://github.com/calvernaz/highcharts-serverside-export</url>
 
@@ -504,7 +504,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>1.4</version>
+            <version>2.8.5</version>
             <exclusions>
                 <exclusion>
                     <groupId>xalan</groupId>
@@ -527,7 +527,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.6.0</version>
+            <version>1.8.0-beta2</version>
         </dependency>
         <dependency>
             <groupId>org.mozilla</groupId>
@@ -536,14 +536,21 @@
         </dependency>
     </dependencies>
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/java/org/one2team/highcharts/server/export/util</directory>
+                <filtering>true</filtering>
+                <targetPath>org/one2team/highcharts/server/export/util</targetPath>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -563,6 +570,17 @@
                     <attach>true</attach>
                 </configuration>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-jar-plugin</artifactId>-->
+                <!--<version>3.1.0</version>-->
+                <!--<configuration>-->
+                    <!--<archive>-->
+                        <!--${project.basedir}/src/main/java/org/one2team/highcharts/server/export/util/*.js-->
+                    <!--</archive>-->
+
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
     <properties>
