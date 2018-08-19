@@ -12,44 +12,43 @@ public class HighchartsExporter<T> {
 
 	public HighchartsExporter(ExportType type, SVGRendererInternal<T> internalRenderer) {
 		this.type = type;
-		this.renderer = 
-			new SVGStreamRenderer<T> (new SVGRenderer<T> (internalRenderer),
-				                     type.getTranscoder ());
+		this.renderer =
+				new SVGStreamRenderer<T>(new SVGRenderer<T>(internalRenderer),
+						type.getTranscoder());
 	}
 
-	public void export (T chartOptions,
-			                T globalOptions,
-			                File file) {
-		
+	public void export(T chartOptions,
+	                   T globalOptions,
+	                   File file) {
+
 		OutputStream fos = null;
 		try {
-			fos = render (chartOptions, globalOptions, file);
-
+			fos = render(chartOptions, globalOptions, file);
 		} catch (Exception e) {
-			e.printStackTrace ();
-			throw (new RuntimeException (e));
+			e.printStackTrace();
+			throw (new RuntimeException(e));
 		} finally {
 			if (fos != null)
-				IOUtils.closeQuietly (fos);
+				IOUtils.closeQuietly(fos);
 		}
 	}
 
-	private OutputStream render (T chartOptions,
-			                         T globalOptions,
-                               File file) throws FileNotFoundException {
+	private OutputStream render(T chartOptions,
+	                            T globalOptions,
+	                            File file) throws FileNotFoundException {
 		FileOutputStream fos;
-		renderer.setChartOptions (chartOptions)
-				    .setGlobalOptions (globalOptions)
-				    .setOutputStream (fos = new FileOutputStream (file))
-				    .render ();
+		renderer.setChartOptions(chartOptions)
+				.setGlobalOptions(globalOptions)
+				.setOutputStream(fos = new FileOutputStream(file))
+				.render();
 		return fos;
 	}
 
-	public SVGStreamRenderer<T> getRenderer () {
+	public SVGStreamRenderer<T> getRenderer() {
 		return renderer;
 	}
 
-	public ExportType getType () {
+	public ExportType getType() {
 		return type;
 	}
 
